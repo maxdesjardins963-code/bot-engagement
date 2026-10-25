@@ -189,3 +189,8 @@ client.once(Events.ClientReady, async () => {
 });
 
 client.login(TOKEN);
+
+// Fake web server so Render detects an open port
+require('http')
+  .createServer((req, res) => res.end('Bot is running'))
+  .listen(process.env.PORT || 3000, () => console.log('Fake port open'));
